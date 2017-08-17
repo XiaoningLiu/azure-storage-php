@@ -1,4 +1,5 @@
 * Fixed wrong PHPUnit `@covers` tags in unit and functional test.
+* Added `BlobRestProxy::listPageBlobRangesDiff` and `BlobRestProxy::listPageBlobRangesDiffAsync` for getting page ranges difference. Refer to https://msdn.microsoft.com/en-us/library/azure/mt736912.aspx for more detailed information.
 
 2017.07 - version 0.17.0
 
