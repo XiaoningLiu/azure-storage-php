@@ -17,7 +17,7 @@
  * @category  Microsoft
  * @package   MicrosoftAzure\Storage\Tests\Framework
  * @author    Azure Storage PHP SDK <dmsh@microsoft.com>
- * @copyright 2016 Microsoft Corporation
+ * @copyright 2017 Microsoft Corporation
  * @license   https://github.com/azure/azure-storage-php/LICENSE
  * @link      https://github.com/azure/azure-storage-php
  */
@@ -39,7 +39,7 @@ use GuzzleHttp\Psr7\Response;
  *
  * @package    MicrosoftAzure\Storage\Tests\Framework
  * @author     Azure Storage PHP SDK <dmsh@microsoft.com>
- * @copyright  2016 Microsoft Corporation
+ * @copyright  2017 Microsoft Corporation
  * @license    https://github.com/azure/azure-storage-php/LICENSE
  * @link       https://github.com/azure/azure-storage-php
  */

@@ -17,7 +17,7 @@
  * @category  Microsoft
  * @package   MicrosoftAzure\Storage\Tests\Unit\Blob\Models
  * @author    Azure Storage PHP SDK <dmsh@microsoft.com>
- * @copyright 2016 Microsoft Corporation
+ * @copyright 2017 Microsoft Corporation
  * @license   https://github.com/azure/azure-storage-php/LICENSE
  * @link      https://github.com/azure/azure-storage-php
  */
@@ -33,7 +33,7 @@ use MicrosoftAzure\Storage\Blob\Models\GetBlobMetadataResult;
  * @category  Microsoft
  * @package   MicrosoftAzure\Storage\Tests\Unit\Blob\Models
  * @author    Azure Storage PHP SDK <dmsh@microsoft.com>
- * @copyright 2016 Microsoft Corporation
+ * @copyright 2017 Microsoft Corporation
  * @license   https://github.com/azure/azure-storage-php/LICENSE
  * @link      https://github.com/azure/azure-storage-php
  */
