@@ -29,7 +29,7 @@ use MicrosoftAzure\Storage\Common\Exceptions\InvalidArgumentTypeException;
 use MicrosoftAzure\Storage\Common\Internal\Resources;
 
 /**
- * Validates aganist a condition and throws an exception in case of failure.
+ * Validates against a condition and throws an exception in case of failure.
  *
  * @category  Microsoft
  * @package   MicrosoftAzure\Storage\Common\Internal
