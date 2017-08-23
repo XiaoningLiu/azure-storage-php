@@ -248,7 +248,7 @@ class SharedAccessSignatureHelper
      *                                    the path of the resource. It should be
      *                                    - {container}/{blob}: for blobs,
      *                                    - {container}: for containers, e.g.:
-     *                                    /mymusic/music.mp3 or
+     *                                    mymusic/music.mp3 or
      *                                    music.mp3
      * @param  string $signedPermissions  Signed permissions.
      * @param  string $signedExpiry       Signed expiry date.
@@ -329,7 +329,7 @@ class SharedAccessSignatureHelper
      *                                    the path of the resource. It should be
      *                                    - {share}/{file}: for files,
      *                                    - {share}: for shares, e.g.:
-     *                                    /mymusic/music.mp3 or
+     *                                    mymusic/music.mp3 or
      *                                    music.mp3
      * @param  string $signedPermissions  Signed permissions.
      * @param  string $signedExpiry       Signed expiry date.
