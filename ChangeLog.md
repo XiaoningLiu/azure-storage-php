@@ -1,3 +1,5 @@
+* The public access level of a container is now returned from the List Containers and Get Container Properties APIs.
+
 2017.08 - version 0.18.0
 
 All
