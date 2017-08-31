@@ -1,3 +1,5 @@
+* The `BlobRestProxy::createMessage` now returns information about the message that was just added, including the pop receipt. 
+
 2017.08 - version 0.18.0
 
 All
