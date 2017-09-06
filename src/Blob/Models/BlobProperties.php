@@ -40,24 +40,24 @@ use MicrosoftAzure\Storage\Common\Internal\Utilities;
  */
 class BlobProperties
 {
-    private $_lastModified;
-    private $_etag;
-    private $_contentType;
-    private $_contentLength;
-    private $_contentEncoding;
-    private $_contentLanguage;
-    private $_contentMD5;
-    private $_contentRange;
-    private $_cacheControl;
-    private $_contentDisposition;
-    private $_blobType;
-    private $_leaseStatus;
-    private $_leaseState;
-    private $_leaseDuration;
-    private $_sequenceNumber;
-    private $_serverEncrypted;
-    private $_committedBlockCount;
-    private $_copyState;
+    private $lastModified;
+    private $etag;
+    private $contentType;
+    private $contentLength;
+    private $contentEncoding;
+    private $contentLanguage;
+    private $contentMD5;
+    private $contentRange;
+    private $cacheControl;
+    private $contentDisposition;
+    private $blobType;
+    private $leaseStatus;
+    private $leaseState;
+    private $leaseDuration;
+    private $sequenceNumber;
+    private $serverEncrypted;
+    private $committedBlockCount;
+    private $copyState;
     
     /**
      * Creates BlobProperties object from $parsed response in array representation of XML elements
@@ -120,7 +120,7 @@ class BlobProperties
      */
     public function getLastModified()
     {
-        return $this->_lastModified;
+        return $this->lastModified;
     }
 
     /**
@@ -133,7 +133,7 @@ class BlobProperties
     public function setLastModified(\DateTime $lastModified)
     {
         Validate::isDate($lastModified);
-        $this->_lastModified = $lastModified;
+        $this->lastModified = $lastModified;
     }
 
     /**
@@ -143,7 +143,7 @@ class BlobProperties
      */
     public function getETag()
     {
-        return $this->_etag;
+        return $this->etag;
     }
 
     /**
@@ -155,7 +155,7 @@ class BlobProperties
      */
     public function setETag($etag)
     {
-        $this->_etag = $etag;
+        $this->etag = $etag;
     }
     
     /**
@@ -165,7 +165,7 @@ class BlobProperties
      */
     public function getContentType()
     {
-        return $this->_contentType;
+        return $this->contentType;
     }
 
     /**
@@ -177,7 +177,7 @@ class BlobProperties
      */
     public function setContentType($contentType)
     {
-        $this->_contentType = $contentType;
+        $this->contentType = $contentType;
     }
     
     /**
@@ -187,7 +187,7 @@ class BlobProperties
      */
     public function getContentRange()
     {
-        return $this->_contentRange;
+        return $this->contentRange;
     }
 
     /**
@@ -199,7 +199,7 @@ class BlobProperties
      */
     public function setContentRange($contentRange)
     {
-        $this->_contentRange = $contentRange;
+        $this->contentRange = $contentRange;
     }
     
     /**
@@ -209,7 +209,7 @@ class BlobProperties
      */
     public function getContentLength()
     {
-        return $this->_contentLength;
+        return $this->contentLength;
     }
 
     /**
@@ -222,7 +222,7 @@ class BlobProperties
     public function setContentLength($contentLength)
     {
         Validate::isInteger($contentLength, 'contentLength');
-        $this->_contentLength = $contentLength;
+        $this->contentLength = $contentLength;
     }
     
     /**
@@ -232,7 +232,7 @@ class BlobProperties
      */
     public function getContentEncoding()
     {
-        return $this->_contentEncoding;
+        return $this->contentEncoding;
     }
 
     /**
@@ -244,7 +244,7 @@ class BlobProperties
      */
     public function setContentEncoding($contentEncoding)
     {
-        $this->_contentEncoding = $contentEncoding;
+        $this->contentEncoding = $contentEncoding;
     }
     
     /**
@@ -254,7 +254,7 @@ class BlobProperties
      */
     public function getContentLanguage()
     {
-        return $this->_contentLanguage;
+        return $this->contentLanguage;
     }
 
     /**
@@ -266,7 +266,7 @@ class BlobProperties
      */
     public function setContentLanguage($contentLanguage)
     {
-        $this->_contentLanguage = $contentLanguage;
+        $this->contentLanguage = $contentLanguage;
     }
     
     /**
@@ -276,7 +276,7 @@ class BlobProperties
      */
     public function getContentMD5()
     {
-        return $this->_contentMD5;
+        return $this->contentMD5;
     }
 
     /**
@@ -288,7 +288,7 @@ class BlobProperties
      */
     public function setContentMD5($contentMD5)
     {
-        $this->_contentMD5 = $contentMD5;
+        $this->contentMD5 = $contentMD5;
     }
     
     /**
@@ -298,7 +298,7 @@ class BlobProperties
      */
     public function getCacheControl()
     {
-        return $this->_cacheControl;
+        return $this->cacheControl;
     }
 
     /**
@@ -310,7 +310,7 @@ class BlobProperties
      */
     public function setCacheControl($cacheControl)
     {
-        $this->_cacheControl = $cacheControl;
+        $this->cacheControl = $cacheControl;
     }
     
     /**
@@ -320,7 +320,7 @@ class BlobProperties
      */
     public function getContentDisposition()
     {
-        return $this->_contentDisposition;
+        return $this->contentDisposition;
     }
 
     /**
@@ -332,7 +332,7 @@ class BlobProperties
      */
     public function setContentDisposition($contentDisposition)
     {
-        $this->_contentDisposition = $contentDisposition;
+        $this->contentDisposition = $contentDisposition;
     }
     
     /**
@@ -342,7 +342,7 @@ class BlobProperties
      */
     public function getBlobType()
     {
-        return $this->_blobType;
+        return $this->blobType;
     }
 
     /**
@@ -354,7 +354,7 @@ class BlobProperties
      */
     public function setBlobType($blobType)
     {
-        $this->_blobType = $blobType;
+        $this->blobType = $blobType;
     }
     
     /**
@@ -364,7 +364,7 @@ class BlobProperties
      */
     public function getLeaseStatus()
     {
-        return $this->_leaseStatus;
+        return $this->leaseStatus;
     }
 
     /**
@@ -376,7 +376,7 @@ class BlobProperties
      */
     public function setLeaseStatus($leaseStatus)
     {
-        $this->_leaseStatus = $leaseStatus;
+        $this->leaseStatus = $leaseStatus;
     }
     
     /**
@@ -386,7 +386,7 @@ class BlobProperties
      */
     public function getLeaseState()
     {
-        return $this->_leaseState;
+        return $this->leaseState;
     }
 
     /**
@@ -398,7 +398,7 @@ class BlobProperties
      */
     public function setLeaseState($leaseState)
     {
-        $this->_leaseState = $leaseState;
+        $this->leaseState = $leaseState;
     }
     
     /**
@@ -408,7 +408,7 @@ class BlobProperties
      */
     public function getLeaseDuration()
     {
-        return $this->_leaseDuration;
+        return $this->leaseDuration;
     }
 
     /**
@@ -420,7 +420,7 @@ class BlobProperties
      */
     public function setLeaseDuration($leaseDuration)
     {
-        $this->_leaseDuration = $leaseDuration;
+        $this->leaseDuration = $leaseDuration;
     }
     
     /**
@@ -430,7 +430,7 @@ class BlobProperties
      */
     public function getSequenceNumber()
     {
-        return $this->_sequenceNumber;
+        return $this->sequenceNumber;
     }
 
     /**
@@ -443,7 +443,7 @@ class BlobProperties
     public function setSequenceNumber($sequenceNumber)
     {
         Validate::isInteger($sequenceNumber, 'sequenceNumber');
-        $this->_sequenceNumber = $sequenceNumber;
+        $this->sequenceNumber = $sequenceNumber;
     }
 
     /**
@@ -453,7 +453,7 @@ class BlobProperties
      */
     public function getServerEncrypted()
     {
-        return $this->_serverEncrypted;
+        return $this->serverEncrypted;
     }
 
     /**
@@ -465,7 +465,7 @@ class BlobProperties
      */
     public function setServerEncrypted($serverEncrypted)
     {
-        $this->_serverEncrypted = $serverEncrypted;
+        $this->serverEncrypted = $serverEncrypted;
     }
 
     /**
@@ -475,7 +475,7 @@ class BlobProperties
      */
     public function getCommittedBlockCount()
     {
-        return $this->_committedBlockCount;
+        return $this->committedBlockCount;
     }
 
     /**
@@ -487,7 +487,7 @@ class BlobProperties
      */
     public function setCommittedBlockCount($committedBlockCount)
     {
-        $this->_committedBlockCount = $committedBlockCount;
+        $this->committedBlockCount = $committedBlockCount;
     }
 
     /**
@@ -497,7 +497,7 @@ class BlobProperties
      */
     public function getCopyState()
     {
-        return $this->_copyState;
+        return $this->copyState;
     }
 
     /**
@@ -509,7 +509,7 @@ class BlobProperties
      */
     public function setCopyState($copyState)
     {
-        $this->_copyState = $copyState;
+        $this->copyState = $copyState;
     }
 
     private function setCommonBlobProperties(array $clean)
@@ -544,11 +544,20 @@ class BlobProperties
         $this->setContentLanguage(
             Utilities::tryGetValue($clean, Resources::CONTENT_LANGUAGE)
         );
-        $this->setContentMD5(
-            Utilities::tryGetValue($clean, Resources::CONTENT_MD5)
-        );
         $this->setContentType(
             Utilities::tryGetValue($clean, Resources::CONTENT_TYPE)
         );
+
+        if (Utilities::tryGetValue($clean, Resources::CONTENT_MD5) &&
+            !Utilities::tryGetValue($clean, Resources::CONTENT_RANGE)
+        ) {
+            $this->setContentMD5(
+                Utilities::tryGetValue($clean, Resources::CONTENT_MD5)
+            );
+        } else {
+            $this->setContentMD5(
+                Utilities::tryGetValue($clean, Resources::BLOB_CONTENT_MD5)
+            );
+        }
     }
 }

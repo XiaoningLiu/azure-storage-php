@@ -25,8 +25,8 @@
 namespace MicrosoftAzure\Storage\File\Models;
 
 use MicrosoftAzure\Storage\Common\Internal\Resources;
-use MicrosoftAzure\Storage\Common\Internal\Validate;
 use MicrosoftAzure\Storage\Common\Internal\Utilities;
+use MicrosoftAzure\Storage\Common\Internal\Validate;
 
 /**
  * Represents file properties
@@ -90,9 +90,17 @@ class FileProperties
             Utilities::tryGetValue($parsed, Resources::ETAG)
         );
 
-        $result->setContentMD5(
-            Utilities::tryGetValue($parsed, Resources::CONTENT_MD5)
-        );
+        if (Utilities::tryGetValue($parsed, Resources::CONTENT_MD5) &&
+            !Utilities::tryGetValue($parsed, Resources::CONTENT_RANGE)
+        ) {
+            $result->setContentMD5(
+                Utilities::tryGetValue($parsed, Resources::CONTENT_MD5)
+            );
+        } else {
+            $result->setContentMD5(
+                Utilities::tryGetValue($parsed, Resources::FILE_CONTENT_MD5)
+            );
+        }
 
         $result->setContentEncoding(
             Utilities::tryGetValue($parsed, Resources::CONTENT_ENCODING)
