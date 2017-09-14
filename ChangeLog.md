@@ -1,3 +1,5 @@
+* Fixed wrong `XmlSerializer` in ServiceException.php.
+
 2017.08 - version 0.18.0
 
 All
