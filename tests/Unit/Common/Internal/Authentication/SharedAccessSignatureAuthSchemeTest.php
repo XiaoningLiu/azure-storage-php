@@ -44,18 +44,12 @@ use MicrosoftAzure\Storage\Common\Internal\Resources;
  */
 class SharedAccessSignatureAuthSchemeTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-    * @covers MicrosoftAzure\Storage\Common\Internal\Authentication\SharedAccessSignatureAuthScheme::__construct
-    */
     public function testConstruct()
     {
         $mock = new SharedAccessSignatureAuthSchemeMock(TestResources::SAS_TOKEN);
         $this->assertEquals(TestResources::SAS_TOKEN, $mock->getSasToken());
     }
 
-    /**
-    * @covers MicrosoftAzure\Storage\Common\Internal\Authentication\SharedAccessSignatureAuthScheme::signRequest
-    */
     public function testSignRequest()
     {
         // Setup
