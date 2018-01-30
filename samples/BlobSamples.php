@@ -28,6 +28,7 @@ use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use MicrosoftAzure\Storage\Blob\BlobSharedAccessSignatureHelper;
 use MicrosoftAzure\Storage\Blob\Models\CreateBlockBlobOptions;
 use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
+use MicrosoftAzure\Storage\Blob\Models\ListBlobsOptions;
 use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
 use MicrosoftAzure\Storage\Blob\Models\DeleteBlobOptions;
 use MicrosoftAzure\Storage\Blob\Models\CreateBlobOptions;
@@ -108,7 +109,7 @@ try {
 }
 
 try {
-    cleanUp($blobClient, $containerName)->wait();
+    cleanUp($blobClient, $containerName);
 } catch (ServiceException $e) {
     $code = $e->getCode();
     $error_message = $e->getMessage();
@@ -326,12 +327,22 @@ function blobMetadata($blobClient)
 
 function uploadBlobSample($blobClient)
 {
+    if (!file_exists("myfile.txt")) {
+        $file = fopen("myfile.txt", 'w');
+        fwrite($file, 'Hello World!');
+        fclose($file);
+    }
+
     $content = fopen("myfile.txt", "r");
     $blob_name = "myblob";
+
+    $content2 = "string content";
+    $blob_name2 = "myblob2";
     
     try {
         //Upload blob
         $blobClient->createBlockBlob("mycontainer", $blob_name, $content);
+        $blobClient->createBlockBlob("mycontainer", $blob_name2, $content2);
     } catch (ServiceException $e) {
         $code = $e->getCode();
         $error_message = $e->getMessage();
@@ -413,12 +424,19 @@ function listBlobsSample($blobClient)
 {
     try {
         // List blobs.
-        $blob_list = $blobClient->listBlobs("mycontainer");
-        $blobs = $blob_list->getBlobs();
-    
-        foreach ($blobs as $blob) {
-            echo $blob->getName().": ".$blob->getUrl().PHP_EOL;
-        }
+        $listBlobsOptions = new ListBlobsOptions();
+        $listBlobsOptions->setPrefix("myblob");
+        $listBlobsOptions->setMaxResults(1);
+
+        do {
+            $blob_list = $blobClient->listBlobs("mycontainer", $listBlobsOptions);
+            foreach ($blob_list->getBlobs() as $blob) {
+                echo $blob->getName().": ".$blob->getUrl().PHP_EOL;
+            }
+
+            $listBlobsOptions->setContinuationToken($blob_list->getContinuationToken());
+        } while ($blob_list->getContinuationToken());
+
     } catch (ServiceException $e) {
         $code = $e->getCode();
         $error_message = $e->getMessage();
@@ -567,38 +585,25 @@ function snapshotOperations($blobClient)
 
 function cleanUp($blobClient, $containerName)
 {
-    return $blobClient->listContainersAsync()->then(
-        function ($listContainersResult) use ($blobClient, $containerName) {
-            $containerNames = array();
-            foreach ($listContainersResult->getContainers() as $container) {
-                $containerNames[] = $container->getName();
-            }
-            if (in_array($containerName, $containerNames)) {
-                $blobClient->deleteContainerAsync($containerName)->wait();
-            }
-            if (in_array('mycontainer', $containerNames)) {
-                $blobClient->deleteContainerAsync('mycontainer')->wait();
-            }
-            if (file_exists('output.txt')) {
-                unlink('output.txt');
-            }
-            if (file_exists('outputBySAS.txt')) {
-                unlink('outputBySAS.txt');
-            }
-            if (file_exists('myblob.txt')) {
-                unlink('myblob.txt');
-            }
-            if (file_exists('PageContent.txt')) {
-                unlink('PageContent.txt');
-            }
-            if (file_exists('HelloWorldSnapshotCopy.png')) {
-                unlink('HelloWorldSnapshotCopy.png');
-            }
-            echo "Successfully cleaned up\n";
-            return $blobClient->listContainersAsync();
-        },
-        null
-    );
+    if (file_exists('output.txt')) {
+        unlink('output.txt');
+    }
+    if (file_exists('myfile.txt')) {
+        unlink('myfile.txt');
+    }
+    if (file_exists('outputBySAS.txt')) {
+        unlink('outputBySAS.txt');
+    }
+    if (file_exists('myblob.txt')) {
+        unlink('myblob.txt');
+    }
+    if (file_exists('PageContent.txt')) {
+        unlink('PageContent.txt');
+    }
+    if (file_exists('HelloWorldSnapshotCopy.png')) {
+        unlink('HelloWorldSnapshotCopy.png');
+    }
+    echo "Successfully cleaned up\n";
 }
 
 function leaseOperations($blobClient)
